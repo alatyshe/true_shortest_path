@@ -14,14 +14,14 @@ RESET = "\x1b[0m"
 
 NAME = true_shortest_path
 CXX = g++ -std=c++11
-CXXFLAGS = -Wall -Wextra -Werror
+# CXXFLAGS = -Wall -Wextra -Werror
 
 #------ path -------
 FILES_PATH		= ./src
 OBJECTS_PATH	= ./objects
 
 #------ files ------
-FILES_FILES		= main parse_stl
+FILES_FILES		= main parse Figure Point
 
 #------ other ------
 FILES_OBJ 		= $(addprefix $(OBJECTS_PATH)/, $(addsuffix .o, $(FILES_FILES)))
@@ -38,7 +38,7 @@ $(NAME): $(FILES_OBJ)
 
 $(OBJECTS_PATH)/%.o: $(FILES_PATH)/%.cpp
 	@mkdir $(OBJECTS_PATH) 2> /dev/null || true
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
+	@$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 clean:
 	@rm -f $(FILES_OBJ)
