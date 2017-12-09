@@ -10,9 +10,9 @@
 class Point
 {
 private:
-	float x;
-	float y;
-	float z;
+	float _x;
+	float _y;
+	float _z;
 
 public:
 	Point();

@@ -16,16 +16,16 @@ class Triangle
 {
 private:
 	Point					*normal;
-	Point					*pointers_array;
+	Point					**pointers_array;
 
 public:
 	Triangle();
-	Triangle(Point *normalp, Point *pointers_arrayp);
+	Triangle(Point *normalp, Point **pointers_arrayp);
 	~Triangle();
 	
 	void					addLink(Triangle *link);
 	Point 					*getNormal(void) const;
-	Point 					*getPointers(void) const;
+	Point 					**getPointers(void) const;
 	Point                   *checkPointer(void) const;
 
 	bool 					operator==(const Triangle& rhs);

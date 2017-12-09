@@ -15,6 +15,7 @@
 # include <iostream>
 # include <sstream>
 # include <streambuf>
+# include <cmath>
 
 # include "../headers/Triangle.hpp"
 # include "../headers/Point.hpp"
@@ -22,19 +23,19 @@
 class Figure
 {
 private:
-    std::vector<Triangle>   _triangles;
+    std::vector<Triangle *> _triangles;
     Point                   *_start;
     Point                   *_dest;
 
 public:
 	Figure();
-    Figure(std::vector<Triangle> triangles, Point *start, Point *dest);
+    Figure(std::vector<Triangle *> triangles, Point *start, Point *dest);
 	~Figure();
 
-    std::vector<Triangle>       getTriangles(void) const;
+    std::vector<Triangle *>     getTriangles(void) const;
     Point                       *getStart(void) const;
     Point                       *getDestination(void) const;
-    bool                        checkPointer(void) const;
+    bool                        checkPointer(void);
     float                       getTriangleSideSize(Point const &A, Point const &B);
 
 };

@@ -20,12 +20,12 @@ int main(int argc, char* argv[])
 
 	Figure 	*figure = stl::parse_stl(stl_file_name);
 
-	std::vector<Triangle>	triangles = figure->getTriangles();
+	std::vector<Triangle *>	triangles = figure->getTriangles();
 	Point 					*start = figure->getStart();
 	Point 					*destination = figure->getDestination();
 
 	std::cout << "# triangles = " << triangles.size() << std::endl;
-	std::vector<Triangle>::iterator 	first_iterator = triangles.begin();
+	std::vector<Triangle *>::iterator 	first_iterator = triangles.begin();
 	while (first_iterator != triangles.end()) {
 
 		// std::vector<Triangle>::iterator 	second_iterator = triangles.begin();
@@ -35,25 +35,27 @@ int main(int argc, char* argv[])
 		// 	second_iterator++;
 		// }
 
-		std::cout << "---- TRIANGLE ----" << std::endl;
-		std::cout << YELLOW << "normal:" << RESET << std::endl;
-		std::cout << *((*first_iterator).getNormal()) << std::endl;
+		// std::cout << "---- TRIANGLE ----" << std::endl;
+		// std::cout << YELLOW << "normal:" << RESET << std::endl;
+		// std::cout << *((*first_iterator).getNormal()) << std::endl;
 
 		std::cout << CYAN << "coords:" << RESET << std::endl;
-		Point		*array = (*first_iterator).getPointers();
-		std::cout << array[0] << std::endl;
-		std::cout << array[1] << std::endl;
-		std::cout << array[2] << std::endl;
+		Point		**array = (*first_iterator)->getPointers();
+		std::cout << *array[0] << std::endl;
+		std::cout << *array[1] << std::endl;
+		std::cout << *array[2] << std::endl;
+
 		first_iterator++;
 	}
 
+	figure->checkPointer();
 
 
 
-	std::cout << "START POINT" << std::endl;
-	std::cout << (*start) << std::endl;
-	std::cout << "DEST POINT" << std::endl;
-	std::cout << (*destination) << std::endl;
+	// std::cout << "START POINT" << std::endl;
+	// std::cout << (*start) << std::endl;
+	// std::cout << "DEST POINT" << std::endl;
+	// std::cout << (*destination) << std::endl;
 
 	return (0);
 }
