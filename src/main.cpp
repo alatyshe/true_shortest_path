@@ -40,10 +40,10 @@ int main(int argc, char* argv[])
 		// std::cout << *((*first_iterator).getNormal()) << std::endl;
 
 		std::cout << CYAN << "coords:" << RESET << std::endl;
-		Point		**array = (*first_iterator)->getPointers();
-		std::cout << *array[0] << std::endl;
-		std::cout << *array[1] << std::endl;
-		std::cout << *array[2] << std::endl;
+		Point		*array = (*first_iterator)->getPointers();
+		std::cout << array[0] << std::endl;
+		std::cout << array[1] << std::endl;
+		std::cout << array[2] << std::endl;
 
 		first_iterator++;
 	}

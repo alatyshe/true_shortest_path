@@ -4,14 +4,14 @@
 Triangle::Triangle() { ; }
 Triangle::~Triangle() { ; }
 
-Triangle::Triangle(Point *normalp, Point **pointers_arrayp) : 
+Triangle::Triangle(Point *normalp, Point *pointers_arrayp) : 
 	normal(normalp),
 	pointers_array(pointers_arrayp)
 { ; }
 
 
 Point 			*Triangle::getNormal(void) const { return this->normal; }
-Point 			**Triangle::getPointers(void) const { return this->pointers_array; }
+Point 			*Triangle::getPointers(void) const { return this->pointers_array; }
 
 std::ostream&	operator<<(std::ostream& out, const Triangle& t) {
 	std::cout << "---- TRIANGLE ----" << std::endl;
@@ -19,10 +19,10 @@ std::ostream&	operator<<(std::ostream& out, const Triangle& t) {
 	// std::cout << t.getNormal() << std::endl;
 
 	std::cout << "coords:" << std::endl;
-	Point		**array = t.getPointers();
-	std::cout << *array[0] << std::endl;
-	std::cout << *array[1] << std::endl;
-	std::cout << *array[2] << std::endl << std::endl;
+	Point		*array = t.getPointers();
+	std::cout << array[0] << std::endl;
+	std::cout << array[1] << std::endl;
+	std::cout << array[2] << std::endl << std::endl;
 	return out;
 }
 

@@ -92,7 +92,7 @@ namespace stl {
 		std::cout << *points[2] << std::endl;
 		Point	*normal = new Point(0, 0, 0);
 
-		figures.push_back(new Triangle(normal, points));
+		figures.push_back(new Triangle(normal, *points));
 
 		std::cout << GREEN << "Please enter start point" << std::endl << RESET;
 		Point *start = parse_start_dest();

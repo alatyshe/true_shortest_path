@@ -19,6 +19,6 @@ bool 				Point::operator==(const Point& rhs) {
 
 std::ostream&	operator<<(std::ostream& out, const Point p)
 {
-	out << "(X : " << p.getX() << ", Y : " << p.getY() << ", Z : " << p.getZ() << ")";
+	out << "(X : " << std::fixed << p.getX() << ", Y : " << std::fixed << p.getY() << ", Z : " << std::fixed << p.getZ() << ")";
 	return out;
 }
