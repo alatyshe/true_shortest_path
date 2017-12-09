@@ -7,9 +7,6 @@
 # include <sstream>
 # include <streambuf>
 
-# include "../headers/parsing.hpp"
-# include "../headers/Figure.hpp"
-
 class Point
 {
 private:
@@ -17,18 +14,16 @@ private:
 	float y;
 	float z;
 
-	std::vector<Point *> 	links;
-
 public:
 	Point();
 	Point(float x, float y, float z);
 
-	void		addLink(Point *link);
-	
 	float		getX(void) const;
 	float		getY(void) const;
 	float		getZ(void) const;
 
+	bool 		operator==(const Point& rhs);
+	
 	~Point();
 
 };

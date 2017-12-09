@@ -1,5 +1,5 @@
-#include "../headers/parsing.hpp"
 #include "../headers/Figure.hpp"
+#include "../headers/parsing.hpp"
 #include "../headers/Point.hpp"
 
 class Point;
@@ -22,7 +22,30 @@ namespace stl {
 		return (new Point(x, y, z));
 	}
 
-	std::vector<Figure> parse_stl(const std::string& stl_path)
+	Point			*parse_start_dest(void)
+	{
+		std::string line;
+
+		std::cout << "set x cord : ";
+		std::getline (std::cin, line);
+		float x = std::stod(line.c_str());
+		std::cout << x << std::endl;
+
+		std::cout << "set y cord : ";
+		std::getline (std::cin, line);
+		float y = std::stod(line.c_str());
+		std::cout << y << std::endl;
+
+		std::cout << "set z cord : ";
+		std::getline (std::cin, line);
+		float z = std::stod(line.c_str());
+		std::cout << z << std::endl;
+
+		Point *dest = new Point(x, y, z);
+		return (dest);
+	}
+
+	Figure	*parse_stl(const std::string& stl_path)
 	{
 		std::ifstream stl_file(stl_path.c_str(), std::ios::in | std::ios::binary);
 		if (!stl_file)
@@ -37,13 +60,10 @@ namespace stl {
 		stl_file.read(header_info, 80);	// читает заголовок
 		stl_file.read(n_triangles, 4);	// читает количество треугольников
 
-		// std::string h(header_info);		// преобразует char массив в строку
-
-
 		unsigned int* r = (unsigned int*) n_triangles;	// интересный способ кастования
 		unsigned int num_triangles = *r;
 
-		std::vector<Figure> 	figures;
+		std::vector<Triangle> 	figures;
 
 		for (unsigned int i = 0; i < num_triangles; i++) // чтение файла
 		{
@@ -55,12 +75,20 @@ namespace stl {
 			points[1] 	= parse_point(stl_file);
 			points[2] 	= parse_point(stl_file);
 
-			std::cout << *normal << std::endl;
-			figures.push_back(Figure(normal, *points));
+			// std::cout << *normal << std::endl;
+			figures.push_back(Triangle(normal, *points));
 
 			char dummy[2];
 			stl_file.read(dummy, 2);
 		}
-		return figures;
+
+		std::cout << GREEN << "Please enter start point" << std::endl << RESET;
+		Point *start = parse_start_dest();
+
+		std::cout << GREEN << "Please enter dest point" << std::endl << RESET;
+		Point *dest = parse_start_dest();
+
+
+		return (new Figure(figures, start, dest));
 	}
 }

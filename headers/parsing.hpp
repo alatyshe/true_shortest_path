@@ -9,7 +9,10 @@
 # include <sstream>
 # include <streambuf>
 
+#include "../headers/Triangle.hpp"
+
 class Figure;
+class Triangle;
 
 namespace stl {
 
@@ -40,7 +43,7 @@ namespace stl {
 	// 	stl_data(std::string namep) : name(namep) {}
 	// };
 
-	std::vector<Figure> parse_stl(const std::string& stl_path);
+	Figure	*parse_stl(const std::string& stl_path);
 
 }
 

@@ -1,39 +1,44 @@
 #ifndef FIGURE_HPP
 # define FIGURE_HPP
 
+# define RED				"\x1b[31m"
+# define GREEN				"\x1b[32m"
+# define YELLOW				"\x1b[33m"
+# define BLUE				"\x1b[34m"
+# define MAGENTA			"\x1b[35m"
+# define CYAN				"\x1b[36m"
+# define BLACK				"\x1b[37m"
+# define RESET				"\x1b[0m"
+
 # include <cassert>
 # include <fstream>
 # include <iostream>
 # include <sstream>
 # include <streambuf>
 
-# include "../headers/parsing.hpp"
+# include "../headers/Triangle.hpp"
 # include "../headers/Point.hpp"
-
-class Point;
 
 class Figure
 {
 private:
-	// stl::triangle			*triangle;
-	Point					*normal;
-
-	Point					*pointers_array;
+    std::vector<Triangle>   _triangles;
+    Point                   *_start;
+    Point                   *_dest;
 
 public:
 	Figure();
-	Figure(Point *normalp, Point *pointers_arrayp);
+    Figure(std::vector<Triangle> triangles, Point *start, Point *dest);
 	~Figure();
-	
-	// stl::triangle 			*getTriangel(void) const;
-	void					addLink(Figure *link);
-	Point 					*getNormal(void) const;
-	Point 					*getPointers(void) const;
 
-	// void					print_pointers(void);
-	// void					print_normal(void);
+    std::vector<Triangle>       getTriangles(void) const;
+    Point                       *getStart(void) const;
+    Point                       *getDestination(void) const;
+    bool                        checkPointer(void) const;
+    float                       getTriangleSideSize(Point const &A, Point const &B);
 
 };
 
+std::ostream&	operator<<(std::ostream& out, const Figure& t);
 
 #endif

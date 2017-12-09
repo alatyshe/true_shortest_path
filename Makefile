@@ -12,7 +12,7 @@ EOC ="\033[0;0m"
 RESET = "\x1b[0m"
 #==================
 
-NAME = true_shortest_path
+NAME = tsp
 CXX = g++ -std=c++11
 # CXXFLAGS = -Wall -Wextra -Werror
 
@@ -21,7 +21,7 @@ FILES_PATH		= ./src
 OBJECTS_PATH	= ./objects
 
 #------ files ------
-FILES_FILES		= main parse Figure Point
+FILES_FILES		= main parse Point Triangle Figure
 
 #------ other ------
 FILES_OBJ 		= $(addprefix $(OBJECTS_PATH)/, $(addsuffix .o, $(FILES_FILES)))

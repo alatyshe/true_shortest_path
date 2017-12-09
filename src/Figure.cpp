@@ -1,26 +1,53 @@
-// #include "../headers/parsing.hpp"
 #include "../headers/Figure.hpp"
 
 Figure::Figure() { ; }
 Figure::~Figure() { ; }
 
-Figure::Figure(Point *normalp, Point *pointers_arrayp) : 
-	normal(normalp),
-	pointers_array(pointers_arrayp)
+Figure::Figure(std::vector<Triangle> triangles, Point *start, Point *dest) :
+    _triangles(triangles),
+    _start(start),
+    _dest(dest)
 { ; }
 
+std::vector<Triangle>       Figure::getTriangles(void) const { return (this->_triangles); };
+Point                       *Figure::getStart(void) const { return (this->_start); };
+Point                       *Figure::getDestination(void) const { return (this->_dest); };
 
-Point 			*Figure::getNormal(void) const { return this->normal; }
-Point 			*Figure::getPointers(void) const { return this->pointers_array; }
+float                       Figure::getTriangleSideSize(Point const &A, Point const &B) {
+    
+}
 
+
+
+bool                        Figure::checkPointer(void) const {
+	Point 					*start = this->_start;
+	Point 					*destination = this->_dest;
+
+	std::vector<Triangle>::const_iterator i = this->_triangles.begin();
+	while (i != this->_triangles.end()) {
+        // if ()
+        //     return (true);
+		Point		*array = i->getPointers();
+
+		std::cout << array[0].getX() << std::endl;
+        std::cout << array[0].getY() << std::endl;
+        std::cout << array[0].getZ() << std::endl;
+
+        std::cout << array[1].getX() << std::endl;
+        std::cout << array[1].getY() << std::endl;
+        std::cout << array[1].getZ() << std::endl;
+
+        std::cout << array[2].getX() << std::endl;
+        std::cout << array[2].getY() << std::endl;
+        std::cout << array[2].getZ() << std::endl;
+
+		i++;
+	}
+    return (false);
+};
 
 std::ostream&	operator<<(std::ostream& out, const Figure& t)
 {
-	Point		*array = t.getPointers();
-	out << "---- TRIANGLE ----" << std::endl;
-	out << t.getNormal() << std::endl;
-	out << array[0] << std::endl;
-	out << array[1] << std::endl;
-	out << array[2] << std::endl;
+	out << "---- Figure ----" << std::endl;
 	return out;
 }
